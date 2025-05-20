@@ -41,7 +41,7 @@
         {{-- navbar --}}
         @include('layouts.navbar')
 
-        <a class="btn-getstarted" href="/register">Register</a>
+
 
         </div>
     </header>
