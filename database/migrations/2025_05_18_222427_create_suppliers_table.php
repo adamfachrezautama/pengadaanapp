@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->text('alamat');
             $table->string('no_npwp')->unique();
-            $table->integer('status')->default(1);
             $table->text('token')->nullable();
+            $table->integer('status')->default(1);
+             $table->string('password');
             $table->timestamps();
             $table->softDeletes();
         });

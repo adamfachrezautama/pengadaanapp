@@ -25,16 +25,22 @@
 
         <div class="row gy-4">
 
+            @if(\Session::has('berhasil'))
              <div class="alert alert-success" role="alert">
-            A simple success alert—check it out!
+                {{ Session::get('berhasil') }}
             </div>
+            @endif
+
+            @if(\Session::has('gagal'))
+             <div class="alert alert-danger" role="alert">
+                {{ Session::get('gagal') }}
+            </div>
+            @endif
 
             @if(count($errors) > 0)
                 <div class="alert alert-danger" role="alert">
-                    A simple danger alert—check it out!
-
                 <ul>
-                    @foreach($errors as $error)
+                    @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -49,7 +55,7 @@
 
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Nama Usaha</label>
-                  <input type="text" name="name" id="nama_usaha" class="form-control" required="">
+                  <input type="text" name="nama_usaha" id="nama_usaha" class="form-control" required="">
                 </div>
 
                 <div class="col-md-6">
@@ -65,7 +71,7 @@
 
                   <div class="col-md-6">
                   <label for="name-field" class="pb-2">No NPWP</label>
-                  <input type="text" name="name" id="npwp" class="form-control" required="">
+                  <input type="text" name="no_npwp" id="no_npwp" class="form-control" required="">
                 </div>
 
                 <div class="col-md-6">

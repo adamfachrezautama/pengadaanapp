@@ -21,6 +21,7 @@ class Supplier extends Model
         'no_npwp',
         'status',
         'token',
+        'password',
     ];
     protected $hidden = [
         'created_at',

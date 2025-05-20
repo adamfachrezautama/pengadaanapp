@@ -23,14 +23,20 @@ class RegisterController extends Controller
             'no_npwp' => 'required|string|max:255',
         ]);
 
-        $supplier = new Supplier();
-        $supplier->nama_usaha = $request->input('nama_usaha');
-        $supplier->email = $request->input('email');
-        $supplier->alamat = $request->input('alamat');
-        $supplier->no_npwp = $request->input('no_npwp');
-        $supplier->save();
-
-        return response()->json(['message' => 'Supplier registered successfully'], 201);
-
+        if(
+            Supplier::create(
+                [
+                    'nama_usaha' => $request->nama_usaha,
+                    'email' => $request->email,
+                    'alamat' => $request->alamat,
+                    'no_npwp' => $request->no_npwp,
+                    'password' => encrypt($request->password)
+                ]
+            )
+        ){
+            return redirect('/register')->with('berhasil','Data berhasil disimpan');
+        }else{
+            return redirect('/register')->with('gagal','Data gagal disimpan');
+        }
     }
 }
