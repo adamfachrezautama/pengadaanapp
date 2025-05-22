@@ -4,38 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Supplier extends Model
+class Admin extends Model
 {
-    /** @use HasFactory<\Database\Factories\SupplierFactory> */
+    /** @use HasFactory<\Database\Factories\AdminFactory> */
     use HasFactory;
 
-    protected $table = 'suppliers';
+    protected $table = 'admins';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama_usaha',
+        'name',
         'email',
-        'alamat',
-        'no_npwp',
+        'password',
         'status',
         'token',
-        'password',
     ];
+
     protected $hidden = [
         'created_at',
         'updated_at',
         'deleted_at',
+        'password',
+        'token',
+
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'email';
-    }
-    public function getStatusAttribute($value)
+     public function getStatusAttribute($value)
     {
         return $value == 1 ? 'Aktif' : 'Tidak Aktif';
     }
-
 }
