@@ -15,11 +15,13 @@ use Illuminate\Http\Response;
 // library validation
 use Illuminate\Support\Facades\Validator;
 
+
 // libary encryption
 use Illuminate\Contracts\Encryption\DecryptException;
 
 // library session
 use Illuminate\Support\Facades\Session;
+
 
 // model
 use App\Models\Admin;
@@ -27,6 +29,8 @@ use App\Models\Admin;
 
 class AdminController extends Controller
 {
+    use \Illuminate\Foundation\Validation\ValidatesRequests;
+
     //
 
     public function index()
@@ -57,9 +61,16 @@ class AdminController extends Controller
                     ]);
 
                     Session::put('token', $jwt);
-                    return redirect()->route('/admin');
+                    return redirect('/dashboard')->with('berhasil', 'Login berhasil');
                 }
             }
+        }else{
+            return redirect('/admin')->with('gagal', 'Email atau Password salah');
         }
+    }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }

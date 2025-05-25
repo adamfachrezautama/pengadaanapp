@@ -13,5 +13,8 @@ Route::post('/register', RegisterController::class . '@register');
 Route::get('/login', SupplierController::class . '@index');
 Route::post('/login', SupplierController::class . '@login');
 Route::get('/logout', SupplierController::class . '@logout');
+
 Route::get('/admin', AdminController::class . '@index');
+Route::get('/dashboard', AdminController::class . '@dashboard');
+Route::post('/admin', AdminController::class . '@login');
 

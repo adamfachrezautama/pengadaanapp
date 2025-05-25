@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Session;
 // model
 use App\Models\Supplier;
 
+use \Illuminate\Foundation\Validation\ValidatesRequests;
+
+
 class SupplierController extends Controller
 {
     use \Illuminate\Foundation\Validation\ValidatesRequests;
